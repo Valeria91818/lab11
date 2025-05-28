@@ -72,7 +72,6 @@ else:
     print("\nВычисляем выражение: (A⁻¹ + G - F⁻¹)*K")
     term1 = A_inv + G - F_inv
     VIR = term1 * k
-    
     print("\nA⁻¹:\n", A_inv)
     print("\nG:\n", G)
     print("\nF⁻¹:\n", F_inv)
