@@ -4,9 +4,9 @@ numbers = stroki.split()
 flag = 0
 def num_to_words(digits):
     digit_words = {
-        '0': 'íîëü', '1': 'îäèí', '2': 'äâà', '3': 'òğè', '4': '÷åòûğå', '5': 'ïÿòü', '6': 'øåñòü', '7': 'ñåìü', '8': 'âîñåìü', '9': 'äåâÿòü'
+        '0': 'Ã­Ã®Ã«Ã¼', '1': 'Ã®Ã¤Ã¨Ã­', '2': 'Ã¤Ã¢Ã ', '3': 'Ã²Ã°Ã¨', '4': 'Ã·Ã¥Ã²Ã»Ã°Ã¥', '5': 'Ã¯Ã¿Ã²Ã¼', '6': 'Ã¸Ã¥Ã±Ã²Ã¼', '7': 'Ã±Ã¥Ã¬Ã¼', '8': 'Ã¢Ã®Ã±Ã¥Ã¬Ã¼', '9': 'Ã¤Ã¥Ã¢Ã¿Ã²Ã¼'
     }
-    return ' '.join(digit_words.get(digit, "íåèçâåñòíî") for digit in digits)
+    return ' '.join(digit_words.get(digit, "Ã­Ã¥Ã¨Ã§Ã¢Ã¥Ã±Ã²Ã­Ã®") for digit in digits)
 for num in numbers:
     if num.isdigit() and len(num) >= 2:
         if int(num) % 2 == 0:
