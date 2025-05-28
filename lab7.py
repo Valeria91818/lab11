@@ -77,9 +77,6 @@ def main():
     plt.grid(True)
     plt.show()
 
-if __name__ == "__main__":
-    main()
-
 import tkinter as tk
 from tkinter import ttk, scrolledtext
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
