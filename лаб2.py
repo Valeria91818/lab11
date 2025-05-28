@@ -1,0 +1,15 @@
+import re
+with open("txt.txt",'r', encoding='utf-8') as f:
+    stroki=f.readline()
+numbers=stroki.split(',')  
+flag=0
+def num_to_words(digits):
+    digit_words = {'0': 'ноль','1': 'один','2': 'два','3': 'три', '4': 'четыре','5': 'пять','6': 'шесть','7': 'семь',}
+    return digit_words.get(digits, "неизвестно") 
+for num in numbers:
+    if re.fullmatch(r'\d{2,}', num):
+        if int(num) % 2 == 0:
+            if re.search(r'^.(5).*5.$', num): 
+                if num.count('5') > 3: 
+                    flag += 1
+                    print(num_to_words(num))
