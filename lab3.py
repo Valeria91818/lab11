@@ -1,15 +1,53 @@
-import re
-with open("txt.txt",'r', encoding='utf-8') as f:
-    stroki=f.readline()
-numbers=stroki.split(',')  
-flag=0
-def num_to_words(digits):
-    digit_words = {'0': 'ÌÓÎ¸','1': 'Ó‰ËÌ','2': '‰‚‡','3': 'ÚË', '4': '˜ÂÚ˚Â','5': 'ÔˇÚ¸','6': '¯ÂÒÚ¸','7': 'ÒÂÏ¸',}
-    return digit_words.get(digits, "ÌÂËÁ‚ÂÒÚÌÓ") 
-for num in numbers:
-    if re.fullmatch(r'\d{2,}', num):
-        if int(num) % 2 == 0:
-            if re.search(r'^.(5).*5.$', num): 
-                if num.count('5') > 3: 
-                    flag += 1
-                    print(num_to_words(num))
+import random,copy
+def reader(filename):
+    with open(filename,'r') as file:
+        return [list(map(int,line.split())) for line in file]
+def print_matrix(m, title):
+    print(f"\n{title}:")
+    for row in m:
+        print(" ".join(f"{x:4}" for x in row))
+k,n=int(input('–í–≤–µ–¥–∏—Ç–µ —á–∏—Å–ª–æ k ')),int(input('–í–≤–µ–¥–∏—Ç–µ —á–∏—Å–ª–æ n '))
+count_chet,count_digit,x=0,0,n
+A=reader('matrix.txt') 
+print('–ú–∞—Ç—Ä–∏—Ü–∞ –ê');[print(row) for row in A]
+f=copy.deepcopy(A)
+AT=[[0 for j in range(len(A))]for i in range(len(A[0]))]
+for i in range(len(AT)):
+    for j in range(len(AT)):
+        AT[j][i]=A[i][j]
+e=n-1
+for i in range(n):
+    for j in range(n):
+        if i<j and j>e and (j+1)%2==0 and f[i][j]%2!=0:
+            count_chet+=1
+    e-=1
+e=n-1
+for i in range(n):
+    for j in range(n):
+        if i<j and j<e and (i+1)%2!=0:
+            count_digit+=f[i][j]
+    e-=1
+e=n-1
+if count_chet>count_digit:
+    for i in range(n):
+        for j in range(n):
+            if i<j and j<e:
+                f[i][j], f[j][i] = f[j][i], f[i][j]
+        e-=1
+else:
+    for i in range(n):
+        for j in range(n):
+            if i > j and j > e:
+                f[i][j], f[x-1-j][i]=f[x-1-j][i], f[i][j]
+        e-=1
+print("–ú–∞—Ç—Ä–∏—Ü–∞ F: "); [print(row) for row in f]
+KA = [[k*x for x in row] for row in A]
+KA_A = [[sum(KA[i][k]*A[k][j] for k in range(n)) for j in range(n)] for i in range(n)]
+AT = [[A[j][i] for j in range(n)] for i in range(n)]
+KAT = [[k*x for x in row] for row in AT]
+res = [[KA_A[i][j]-KAT[i][j] for j in range(n)] for i in range(n)]
+print_matrix(KA,"KA")
+print_matrix(KA_A,"KA_A")
+print_matrix(AT,"AT")
+print_matrix(KAT,"KAT")
+print_matrix(res, "(K*A)*A - K*A·µÄ")
