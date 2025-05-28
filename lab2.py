@@ -1,6 +1,6 @@
 import re
 with open("txt.txt",'r', encoding='utf-8') as f:
-    stroki=f.readline()
+    stroki=f.readlines()
 numbers=stroki.split(',')  
 flag=0
 def num_to_words(digits):
