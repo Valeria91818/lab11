@@ -4,7 +4,7 @@ with open("txt.txt",'r', encoding='utf-8') as f:
 numbers=stroki.split(',')  
 flag=0
 def num_to_words(digits):
-    digit_words = {''0': 'ноль', '1': 'один', '2': 'два', '3': 'три', '4': 'четыре', '5': 'пять', '6': 'шесть', '7': 'семь', '8': 'восемь', '9': 'девять'}
+    digit_words = {'0': 'ноль', '1': 'один', '2': 'два', '3': 'три', '4': 'четыре', '5': 'пять', '6': 'шесть', '7': 'семь', '8': 'восемь', '9': 'девять'}
     return digit_words.get(digits, "неизвестно") 
 for num in numbers:
     if re.fullmatch(r'\d{2,}', num):
