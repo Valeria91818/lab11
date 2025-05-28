@@ -1,7 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 def is_prime(num):
-    """Функция проверки простоты числа"""
     if num < 2:
         return False
     for i in range(2, int(np.sqrt(num)) + 1):
@@ -9,7 +8,6 @@ def is_prime(num):
             return False
     return True
 def reader(filename):  
-    """Чтение матрицы из файла"""
     with open(filename, 'r') as file:
         return [list(map(int, line.split())) for line in file]
 k = int(input("Введите k: "))
